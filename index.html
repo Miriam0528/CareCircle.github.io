@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>British Red Cross - Rewards</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'red-cross': '#E63946',
+                        'red-cross-dark': '#C1121F',
+                        'red-cross-light': '#F1FAEE',
+                        'neutral-dark': '#1D3557',
+                        'neutral-light': '#F8F9FA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .btn-primary {
+                @apply bg-red-cross text-white font-bold py-2 px-4 rounded-lg hover:bg-red-cross-dark transition-colors duration-300;
+            }
+            .btn-secondary {
+                @apply bg-white text-red-cross border border-red-cross font-bold py-2 px-4 rounded-lg hover:bg-red-cross-light transition-colors duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral-light font-sans">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/fe442eed128e44f99db330f885441a06.PNG~tplv-a9rns2rl98-24:720:720.png?rcl=20251213073536DD80C013A12D55C870B2&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766187336&x-signature=JCKKwI7c8qbpPoRoAwXye67RfQk%3D" alt="British Red Cross Logo" class="h-10">
+                <span class="text-xl font-bold text-neutral-dark hidden md:inline">Rewards</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-neutral-dark hover:text-red-cross transition-colors">Home</a>
+                <a href="#" class="text-neutral-dark hover:text-red-cross transition-colors">About</a>
+                <a href="#" class="text-neutral-dark hover:text-red-cross transition-colors">Donate</a>
+                <a href="#" class="text-neutral-dark hover:text-red-cross transition-colors">Shop</a>
+                <a href="#" class="text-neutral-dark hover:text-red-cross transition-colors">Services</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-2 bg-red-cross-light px-3 py-1 rounded-full">
+                    <i class="fa fa-star text-red-cross"></i>
+                    <span class="font-bold text-neutral-dark">125</span>
+                </div>
+                <div class="relative">
+                    <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/91173bc931a0488a84c7a29f7de943ce.JPG~tplv-a9rns2rl98-24:720:720.image?rcl=202512130741486D1C6C269FF44BD7881F&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766187709&x-signature=qjfPI4DDix9yUJgoYr%2BxBnVf0AA%3D" alt="User Avatar" class="h-10 w-10 rounded-full border-2 border-red-cross">
+                        <span class="hidden md:inline font-medium text-neutral-dark">Fiona</span>
+                        <i class="fa fa-chevron-down text-neutral-dark hidden md:inline"></i>
+                    </button>
+                    <div id="user-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                        <a href="#" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-red-cross-light">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-red-cross-light">My Rewards</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-red-cross-light">Donation History</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-red-cross-light">Settings</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-neutral-dark hover:bg-red-cross-light">Logout</a>
+                    </div>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fa fa-bars text-neutral-dark text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-red-cross to-red-cross-dark text-white rounded-2xl p-8 mb-8 shadow-lg">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-6 md:mb-0 md:w-1/2">
+                    <div class="flex items-center mb-2">
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/bfc1863d41244bca93b0f0fbba556372.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251215030652DB5F0FD92F957720182E&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766344012&x-signature=c%2BdqTldFR1gyHBgf5b%2FPhYaizyc%3D" alt="Care Circle Logo" class="h-12 w-12 mr-3">
+                        <h2 class="text-2xl md:text-3xl font-bold text-shadow">Welcome to Care Circle!</h2>
+                    </div>
+                    <p class="text-base mb-1 ml-4">Welcome to the Care Circle community! We're thrilled to have you with us. Track your impact, earn rewards, and unlock exclusive digital collectibles.</p>
+                    <p class="text-base mb-6 ml-4">Thank you for your support!</p>
+                    <div class="flex space-x-4">
+                        <button class="btn-secondary bg-white text-red-cross hover:bg-gray-100">Join Now</button>
+                        <button class="bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">Learn More</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex flex-col items-center">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse-slow">
+                            <span class="text-2xl font-bold text-neutral-dark">125</span>
+                        </div>
+                        <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/809e3d4c7b99439fb6918f637e1603dc.PNG~tplv-a9rns2rl98-24:720:720.png?rcl=20251213072500F8D9B12DE8DBF8BE627E&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766186700&x-signature=NRMC1PcMRmfmMmgiHu0ZejrwMfk%3D" alt="Red Cross Mascot" class="w-48 h-48 object-contain animate-float bg-transparent">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs Navigation -->
+        <div class="mb-8 border-b border-gray-200">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="rewards-tabs" role="tablist">
+                <li class="mr-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 border-red-cross text-red-cross rounded-t-lg active" id="profile-tab" data-tab="profile" type="button" role="tab" aria-controls="profile" aria-selected="true">My Profile</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="points-tab" data-tab="points" type="button" role="tab" aria-controls="points" aria-selected="false">My Points</button>
+                </li>
+                <li class="mr-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="collectibles-tab" data-tab="collectibles" type="button" role="tab" aria-controls="collectibles" aria-selected="false">My Collectibles</button>
+                </li>
+
+                <li role="presentation">
+                    <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="calendar-tab" data-tab="calendar" type="button" role="tab" aria-controls="calendar" aria-selected="false">Donation Calendar</button>
+                </li>
+                <li role="presentation">
+                    <button class="inline-block p-4 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 rounded-t-lg" id="earn-tab" data-tab="earn" type="button" role="tab" aria-controls="earn" aria-selected="false">How to Earn Points</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="tab-content">
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-pane active">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/4 flex flex-col items-center mb-6 md:mb-0">
+                            <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/91173bc931a0488a84c7a29f7de943ce.JPG~tplv-a9rns2rl98-24:720:720.image?rcl=202512130741486D1C6C269FF44BD7881F&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766187709&x-signature=qjfPI4DDix9yUJgoYr%2BxBnVf0AA%3D" alt="User Avatar" class="h-32 w-32 rounded-full border-4 border-red-cross mb-4">
+                            <h2 class="text-2xl font-bold text-neutral-dark">Fiona</h2>
+                            <p class="text-gray-600">Member since 2020</p>
+                            <div class="mt-4 bg-red-cross-light px-4 py-2 rounded-full flex items-center">
+                                <i class="fa fa-star text-red-cross mr-2"></i>
+                                <span class="font-bold text-neutral-dark">125 Points</span>
+                            </div>
+                        </div>
+                        <div class="md:w-3/4 md:pl-8">
+                            <h3 class="text-xl font-bold text-neutral-dark mb-4">Your Impact</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div class="bg-red-cross-light rounded-lg p-4 text-center">
+                                    <p class="text-3xl font-bold text-red-cross">£500</p>
+                                    <p class="text-neutral-dark">Total Donated</p>
+                                </div>
+                                <div class="bg-red-cross-light rounded-lg p-4 text-center">
+                                    <p class="text-3xl font-bold text-red-cross">12</p>
+                                    <p class="text-neutral-dark">Donations</p>
+                                </div>
+                                <div class="bg-red-cross-light rounded-lg p-4 text-center">
+                                    <p class="text-3xl font-bold text-red-cross">4</p>
+                                    <p class="text-neutral-dark">Collectibles</p>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold text-neutral-dark mb-4">Recent Activity</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="bg-red-cross rounded-full p-2 mr-4">
+                                            <i class="fa fa-heart text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-neutral-dark">Monthly Donation</p>
+                                            <p class="text-sm text-gray-600">December 10, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-bold text-red-cross">+5 Points</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-500 rounded-full p-2 mr-4">
+                                            <i class="fa fa-gift text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-neutral-dark">Redeemed First Aid Kit Mascot</p>
+                                            <p class="text-sm text-gray-600">November 28, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-bold text-red-cross-dark">-15 Points</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="bg-green-500 rounded-full p-2 mr-4">
+                                            <i class="fa fa-truck text-white"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium text-neutral-dark">Clothing Donation</p>
+                                            <p class="text-sm text-gray-600">November 15, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-bold text-red-cross">+8 Points</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Achievements -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-neutral-dark mb-6">Your Impact</h2>
+                    <p class="text-gray-600 mb-6">Here's a summary of your incredible contributions to our cause.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Achievement 1 -->
+                        <div class="bg-red-cross-light rounded-xl p-6 text-center card-hover">
+                            <div class="bg-red-cross rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fa fa-money text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-red-cross mb-2">£500</h3>
+                            <p class="text-neutral-dark">Total Donated</p>
+                        </div>
+                        
+                        <!-- Achievement 2 -->
+                        <div class="bg-red-cross-light rounded-xl p-6 text-center card-hover">
+                            <div class="bg-blue-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fa fa-globe text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-red-cross mb-2">12</h3>
+                            <p class="text-neutral-dark">Projects Supported</p>
+                        </div>
+                        
+                        <!-- Achievement 3 -->
+                        <div class="bg-red-cross-light rounded-xl p-6 text-center card-hover">
+                            <div class="bg-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fa fa-users text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-red-cross mb-2">1,250</h3>
+                            <p class="text-neutral-dark">Lives Impacted</p>
+                        </div>
+                        
+                        <!-- Achievement 4 -->
+                        <div class="bg-red-cross-light rounded-xl p-6 text-center card-hover">
+                            <div class="bg-yellow-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <i class="fa fa-calendar text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-red-cross mb-2">5</h3>
+                            <p class="text-neutral-dark">Years of Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Points Tab -->
+            <div id="points" class="tab-pane hidden">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-neutral-dark mb-6">My Points</h2>
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                        <div>
+                            <p class="text-gray-600">Current Balance</p>
+                            <div class="flex items-center">
+                                <h3 class="text-4xl font-bold text-red-cross">125</h3>
+                                <span class="ml-2 text-gray-500">points</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <button class="btn-primary">
+                                <i class="fa fa-plus mr-2"></i> Earn More Points
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-neutral-dark mb-4">Points History</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="px-4 py-3 rounded-tl-lg">Date</th>
+                                        <th class="px-4 py-3">Activity</th>
+                                        <th class="px-4 py-3">Points</th>
+                                        <th class="px-4 py-3 rounded-tr-lg">Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3">Dec 10, 2025</td>
+                                        <td class="px-4 py-3">Monthly Donation</td>
+                                        <td class="px-4 py-3 text-green-600">+100</td>
+                                        <td class="px-4 py-3">125</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3">Nov 28, 2025</td>
+                                        <td class="px-4 py-3">Redeemed First Aid Kit Mascot</td>
+                                        <td class="px-4 py-3 text-red-600">-300</td>
+                                        <td class="px-4 py-3">115</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3">Nov 15, 2025</td>
+                                        <td class="px-4 py-3">Clothing Donation</td>
+                                        <td class="px-4 py-3 text-green-600">+250</td>
+                                        <td class="px-4 py-3">145</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="px-4 py-3">Oct 10, 2025</td>
+                                        <td class="px-4 py-3">Monthly Donation</td>
+                                        <td class="px-4 py-3 text-green-600">+100</td>
+                                        <td class="px-4 py-3">120</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 rounded-bl-lg">Sep 25, 2025</td>
+                                        <td class="px-4 py-3">Redeemed Rescuer Mascot</td>
+                                        <td class="px-4 py-3 text-red-600">-300</td>
+                                        <td class="px-4 py-3 rounded-br-lg">110</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collectibles Tab -->
+            <div id="collectibles" class="tab-pane hidden">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-neutral-dark mb-6">My Digital Collectibles</h2>
+                    <p class="text-gray-600 mb-6">Your exclusive Red Cross digital collectibles. Each one represents your contribution to our humanitarian work.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Collectible 1 with Details -->
+                        <div class="bg-red-cross-light rounded-xl p-4 text-center card-hover">
+                            <div class="relative mb-4">
+                                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/809e3d4c7b99439fb6918f637e1603dc.PNG~tplv-a9rns2rl98-24:720:720.png?rcl=20251213072500F8D9B12DE8DBF8BE627E&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766186700&x-signature=NRMC1PcMRmfmMmgiHu0ZejrwMfk%3D" alt="Red Cross Mascot" class="w-32 h-32 object-contain mx-auto animate-float bg-transparent">
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1">
+                                    <i class="fa fa-star text-neutral-dark"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-neutral-dark">Warden of Hope</h3>
+                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                <p>Series: 1</p>
+                                <p>Rarity: Common</p>
+                                <p>Unlocked: July 2025</p>
+                                <p>Points: 15</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-red-200">
+                                <p class="text-xs text-gray-600 mb-2">This collectible represents your first donation to the British Red Cross.</p>
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-xs bg-red-cross text-white px-2 py-1 rounded-full hover:bg-red-cross-dark transition-colors">
+                                        <i class="fa fa-share-alt mr-1"></i> Share
+                                    </button>
+                                    <button class="text-xs bg-neutral-dark text-white px-2 py-1 rounded-full hover:bg-gray-700 transition-colors">
+                                        <i class="fa fa-expand mr-1"></i> View 3D
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collectible 2 with Details -->
+                        <div class="bg-red-cross-light rounded-xl p-4 text-center card-hover">
+                            <div class="relative mb-4">
+                                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/ecc6b1f3c2d543eead33ad8d320bcc8d.PNG~tplv-a9rns2rl98-24:720:720.png?rcl=20251213072500F8D9B12DE8DBF8BE627E&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766186700&x-signature=N21DptvaUvg5uNXCNTWla7uKivU%3D" alt="First Aid Kit Mascot" class="w-32 h-32 object-contain mx-auto animate-float bg-transparent">
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1">
+                                    <i class="fa fa-star text-neutral-dark"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-neutral-dark">The Pilgrim</h3>
+                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                <p>Series: 1</p>
+                                <p>Rarity: Uncommon</p>
+                                <p>Unlocked: November 2025</p>
+                                <p>Points: 15</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-red-200">
+                                <p class="text-xs text-gray-600 mb-2">This collectible represents your contribution to our first aid training programs.</p>
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-xs bg-red-cross text-white px-2 py-1 rounded-full hover:bg-red-cross-dark transition-colors">
+                                        <i class="fa fa-share-alt mr-1"></i> Share
+                                    </button>
+                                    <button class="text-xs bg-neutral-dark text-white px-2 py-1 rounded-full hover:bg-gray-700 transition-colors">
+                                        <i class="fa fa-expand mr-1"></i> View 3D
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collectible 3 with Details -->
+                        <div class="bg-red-cross-light rounded-xl p-4 text-center card-hover">
+                            <div class="relative mb-4">
+                                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/35921f16e75640ce9ec2a4f325f7e35b.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251213072500F8D9B12DE8DBF8BE627E&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766186700&x-signature=DiHDXErWXA6QdX%2FgFA7Fao01r3o%3D" alt="Rescuer Mascot" class="w-32 h-32 object-contain mx-auto animate-float bg-transparent">
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1">
+                                    <i class="fa fa-star text-neutral-dark"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-neutral-dark">Flamy</h3>
+                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                <p>Series: 1</p>
+                                <p>Rarity: Rare</p>
+                                <p>Unlocked: September 2025</p>
+                                <p>Points: 15</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-red-200">
+                                <p class="text-xs text-gray-600 mb-2">This collectible represents your support for our emergency response teams.</p>
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-xs bg-red-cross text-white px-2 py-1 rounded-full hover:bg-red-cross-dark transition-colors">
+                                        <i class="fa fa-share-alt mr-1"></i> Share
+                                    </button>
+                                    <button class="text-xs bg-neutral-dark text-white px-2 py-1 rounded-full hover:bg-gray-700 transition-colors">
+                                        <i class="fa fa-expand mr-1"></i> View 3D
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collectible 4 with Details -->
+                        <div class="bg-red-cross-light rounded-xl p-4 text-center card-hover">
+                            <div class="relative mb-4">
+                                <img src="https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/63db27b28b3f4cc79190747e52de8006.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251213072500F8D9B12DE8DBF8BE627E&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766186700&x-signature=z8wsR8WduMNUtJ6SHHITGhuLVaY%3D" alt="Sunny Mascot" class="w-32 h-32 object-contain mx-auto animate-float bg-transparent">
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1">
+                                    <i class="fa fa-star text-neutral-dark"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-neutral-dark">Sunny</h3>
+                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                <p>Series: 1</p>
+                                <p>Rarity: Epic</p>
+                                <p>Unlocked: October 2025</p>
+                                <p>Points: 15</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-red-200">
+                                <p class="text-xs text-gray-600 mb-2">This collectible represents your exceptional support for our humanitarian work.</p>
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-xs bg-red-cross text-white px-2 py-1 rounded-full hover:bg-red-cross-dark transition-colors">
+                                        <i class="fa fa-share-alt mr-1"></i> Share
+                                    </button>
+                                    <button class="text-xs bg-neutral-dark text-white px-2 py-1 rounded-full hover:bg-gray-700 transition-colors">
+                                        <i class="fa fa-expand mr-1"></i> View 3D
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collectible 5 with Details -->
+                        <div class="bg-red-cross-light rounded-xl p-4 text-center card-hover">
+                            <div class="relative mb-4">
+                                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/dbf7418d50744ae6a9001c6777560b48.PNG~tplv-a9rns2rl98-24:720:720.png?rcl=20251213073740F672DED2E0273CE89D01&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766187461&x-signature=wbJu152m%2BirutLOJqZbzEMBLy0s%3D" alt="Mecchan" class="w-32 h-32 object-contain mx-auto animate-float bg-transparent">
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1">
+                                    <i class="fa fa-star text-neutral-dark"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-neutral-dark">Mecchan</h3>
+                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                <p>Series: 1</p>
+                                <p>Rarity: Legendary</p>
+                                <p>Unlocked: December 2025</p>
+                                <p>Points: 15</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-red-200">
+                                <p class="text-xs text-gray-600 mb-2">A special collectible to celebrate your continued support throughout the year.</p>
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-xs bg-red-cross text-white px-2 py-1 rounded-full hover:bg-red-cross-dark transition-colors">
+                                        <i class="fa fa-share-alt mr-1"></i> Share
+                                    </button>
+                                    <button class="text-xs bg-neutral-dark text-white px-2 py-1 rounded-full hover:bg-gray-700 transition-colors">
+                                        <i class="fa fa-expand mr-1"></i> View 3D
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collectible 6 with Details -->
+                        <div class="bg-red-cross-light rounded-xl p-4 text-center card-hover">
+                            <div class="relative mb-4">
+                                <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/3d49adedf25349d6a144d1326b6ba338.png~tplv-a9rns2rl98-24:720:720.png?rcl=202512130754043840F6318B513898EC8F&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766188444&x-signature=duTJ30i45RIYcmx3b%2F7JIIsTK3s%3D" alt="Sprouty" class="w-32 h-32 object-contain mx-auto animate-float bg-transparent">
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1">
+                                    <i class="fa fa-star text-neutral-dark"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-neutral-dark">Sprouty</h3>
+                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                <p>Series: 1</p>
+                                <p>Rarity: Mythic</p>
+                                <p>Unlocked: December 2025</p>
+                                <p>Points: 15</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-red-200">
+                                <p class="text-xs text-gray-600 mb-2">A rare collectible symbolizing new beginnings and hope for the future.</p>
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-xs bg-red-cross text-white px-2 py-1 rounded-full hover:bg-red-cross-dark transition-colors">
+                                        <i class="fa fa-share-alt mr-1"></i> Share
+                                    </button>
+                                    <button class="text-xs bg-neutral-dark text-white px-2 py-1 rounded-full hover:bg-gray-700 transition-colors">
+                                        <i class="fa fa-expand mr-1"></i> View 3D
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collectible 7 with Details -->
+                        <div class="bg-red-cross-light rounded-xl p-4 text-center card-hover">
+                            <div class="relative mb-4">
+                                <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/e43b6cabf3164f0d9ad5046870abec04.png~tplv-a9rns2rl98-24:720:720.png?rcl=20251213075548D1341828AA7AA4ECBD37&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766188549&x-signature=msIAlKgLy9SovbzuhNYpHW6mWMw%3D" alt="Aqua" class="w-32 h-32 object-contain mx-auto animate-float bg-transparent">
+                                <div class="absolute -top-2 -right-2 bg-yellow-400 rounded-full p-1">
+                                    <i class="fa fa-star text-neutral-dark"></i>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-neutral-dark">Aqua</h3>
+                            <div class="mt-2 space-y-1 text-sm text-gray-600">
+                                <p>Series: 1</p>
+                                <p>Rarity: Oceanic</p>
+                                <p>Unlocked: December 2025</p>
+                                <p>Points: 15</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-red-200">
+                                <p class="text-xs text-gray-600 mb-2">A mysterious collectible from the deep, representing the flow of life and compassion.</p>
+                                <div class="flex justify-center space-x-2">
+                                    <button class="text-xs bg-red-cross text-white px-2 py-1 rounded-full hover:bg-red-cross-dark transition-colors">
+                                        <i class="fa fa-share-alt mr-1"></i> Share
+                                    </button>
+                                    <button class="text-xs bg-neutral-dark text-white px-2 py-1 rounded-full hover:bg-gray-700 transition-colors">
+                                        <i class="fa fa-expand mr-1"></i> View 3D
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold text-neutral-dark mb-4">Display Options</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-bold text-neutral-dark mb-2">3D Showcase</h4>
+                                <p class="text-gray-600 mb-4">View and interact with your collectibles in a 3D environment.</p>
+                                <button class="btn-secondary w-full">
+                                    <i class="fa fa-cube mr-2"></i> Launch 3D Showcase
+                                </button>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-bold text-neutral-dark mb-2">Share Collection</h4>
+                                <p class="text-gray-600 mb-4">Share your digital collectibles on social media.</p>
+                                <button class="btn-secondary w-full">
+                                    <i class="fa fa-share-alt mr-2"></i> Share Collection
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Earn Points Tab -->
+            <div id="earn" class="tab-pane hidden">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-neutral-dark mb-6">How to Earn Points</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-red-cross-light rounded-lg p-4">
+                            <div class="bg-red-cross rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="fa fa-heart text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-neutral-dark mb-2">Donate Money</h4>
+                            <p class="text-gray-600">Earn 1 point for every £1 donated to the British Red Cross.</p>
+                        </div>
+                        <div class="bg-red-cross-light rounded-lg p-4">
+                            <div class="bg-red-cross rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="fa fa-gift text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-neutral-dark mb-2">Donate Items</h4>
+                            <p class="text-gray-600">Earn points for donating clothing, furniture, and other items to our charity shops.</p>
+                        </div>
+                        <div class="bg-red-cross-light rounded-lg p-4">
+                            <div class="bg-red-cross rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="fa fa-users text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-neutral-dark mb-2">Volunteer</h4>
+                            <p class="text-gray-600">Earn points for your time volunteering with the British Red Cross.</p>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Points Rules -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold text-neutral-dark mb-6">Detailed Points Breakdown</h3>
+                        
+                        <!-- Donation-based Actions -->
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-red-cross rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-gift text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Donation-based Actions</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Donate clothing</p>
+                                        <p class="text-sm text-gray-600">Donate gently used clothing items</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2-5 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Purchase secondhand items at the Charity Shop</p>
+                                        <p class="text-sm text-gray-600">Each £5 spent</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">3 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Join the Red Cross Monthly Giving</p>
+                                        <p class="text-sm text-gray-600">£2–£5 monthly donation</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2 credits</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workshops & Activities -->
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-500 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-certificate text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Workshops & Activities</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Attend a Red Cross First Aid Workshop</p>
+                                        <p class="text-sm text-gray-600">Participate in an official workshop</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">8 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Join Community Fundraising Events</p>
+                                        <p class="text-sm text-gray-600">Participate in local events</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">5–10 credits</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Volunteer-based Actions -->
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-500 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-users text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Volunteer-based Actions</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Volunteer at a Red Cross store</p>
+                                        <p class="text-sm text-gray-600">Per shift</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">10 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Emergency Kit Preparation</p>
+                                        <p class="text-sm text-gray-600">Help prepare emergency response kits</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">8 credits</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Online Engagement -->
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="bg-purple-500 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-globe text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Online Engagement</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Read a true story of a rescuer</p>
+                                        <p class="text-sm text-gray-600">Complete reading a featured story</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">1 credit</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Take a Humanitarian Quiz</p>
+                                        <p class="text-sm text-gray-600">Complete a knowledge quiz</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Write a digital kindness card</p>
+                                        <p class="text-sm text-gray-600">Send to a disaster victim</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">1 credit</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Complete a Red Cross education piece</p>
+                                        <p class="text-sm text-gray-600">Finish an online learning module</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2 credits</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earn Points Tab -->
+            <div id="earn" class="tab-pane hidden">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-neutral-dark mb-6">How to Earn Points</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-red-cross-light rounded-lg p-4">
+                            <div class="bg-red-cross rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="fa fa-heart text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-neutral-dark mb-2">Donate Money</h4>
+                            <p class="text-gray-600">Earn 1 point for every £1 donated to the British Red Cross.</p>
+                        </div>
+                        <div class="bg-red-cross-light rounded-lg p-4">
+                            <div class="bg-red-cross rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="fa fa-gift text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-neutral-dark mb-2">Donate Items</h4>
+                            <p class="text-gray-600">Earn points for donating clothing, furniture, and other items to our charity shops.</p>
+                        </div>
+                        <div class="bg-red-cross-light rounded-lg p-4">
+                            <div class="bg-red-cross rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                                <i class="fa fa-users text-white text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-neutral-dark mb-2">Volunteer</h4>
+                            <p class="text-gray-600">Earn points for your time volunteering with the British Red Cross.</p>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Points Rules -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold text-neutral-dark mb-6">Detailed Points Breakdown</h3>
+                        
+                        <!-- Donation-based Actions -->
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-red-cross rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-gift text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Donation-based Actions</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Donate clothing</p>
+                                        <p class="text-sm text-gray-600">Donate gently used clothing items</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2-5 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Purchase secondhand items at the Charity Shop</p>
+                                        <p class="text-sm text-gray-600">Each £5 spent</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">3 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Join the Red Cross Monthly Giving</p>
+                                        <p class="text-sm text-gray-600">£2–£5 monthly donation</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2 credits</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Workshops & Activities -->
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-500 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-certificate text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Workshops & Activities</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Attend a Red Cross First Aid Workshop</p>
+                                        <p class="text-sm text-gray-600">Participate in an official workshop</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">8 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Join Community Fundraising Events</p>
+                                        <p class="text-sm text-gray-600">Participate in local events</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">5–10 credits</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Volunteer-based Actions -->
+                        <div class="mb-8">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-500 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-users text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Volunteer-based Actions</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Volunteer at a Red Cross store</p>
+                                        <p class="text-sm text-gray-600">Per shift</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">10 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Emergency Kit Preparation</p>
+                                        <p class="text-sm text-gray-600">Help prepare emergency response kits</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">8 credits</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Online Engagement -->
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="bg-purple-500 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                    <i class="fa fa-globe text-white"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-neutral-dark">Online Engagement</h4>
+                            </div>
+                            <div class="ml-13 space-y-3">
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Read a true story of a rescuer</p>
+                                        <p class="text-sm text-gray-600">Complete reading a featured story</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">1 credit</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Take a Humanitarian Quiz</p>
+                                        <p class="text-sm text-gray-600">Complete a knowledge quiz</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2 credits</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Write a digital kindness card</p>
+                                        <p class="text-sm text-gray-600">Send to a disaster victim</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">1 credit</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+                                    <div>
+                                        <p class="font-medium text-neutral-dark">Complete a Red Cross education piece</p>
+                                        <p class="text-sm text-gray-600">Finish an online learning module</p>
+                                    </div>
+                                    <span class="font-bold text-red-cross">2 credits</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Tab -->
+            <div id="calendar" class="tab-pane hidden">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-neutral-dark mb-6">Your Donation Calendar</h2>
+                    <p class="text-gray-600 mb-6">Track your donation journey. Each heart represents a day you made a contribution to our cause.</p>
+                    
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <button id="prev-month" class="text-neutral-dark hover:text-red-cross transition-colors">
+                                <i class="fa fa-chevron-left mr-1"></i> Previous
+                            </button>
+                            <h3 id="current-month" class="text-xl font-bold text-neutral-dark">December 2025</h3>
+                            <button id="next-month" class="text-neutral-dark hover:text-red-cross transition-colors">
+                                Next <i class="fa fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-7 gap-2 text-center mb-2">
+                            <div class="font-medium text-neutral-dark">Sun</div>
+                            <div class="font-medium text-neutral-dark">Mon</div>
+                            <div class="font-medium text-neutral-dark">Tue</div>
+                            <div class="font-medium text-neutral-dark">Wed</div>
+                            <div class="font-medium text-neutral-dark">Thu</div>
+                            <div class="font-medium text-neutral-dark">Fri</div>
+                            <div class="font-medium text-neutral-dark">Sat</div>
+                        </div>
+                        
+                        <div id="calendar-grid" class="grid grid-cols-7 gap-2">
+                            <!-- Calendar days will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-cross-light rounded-lg p-4">
+                        <h3 class="font-bold text-neutral-dark mb-2">Your Impact This Year</h3>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-gray-600">Total Donation Days:</span>
+                            <span class="font-bold text-red-cross">47</span>
+                        </div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-gray-600">Current Streak:</span>
+                            <span class="font-bold text-red-cross">5 days</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Longest Streak:</span>
+                            <span class="font-bold text-red-cross">12 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/fe442eed128e44f99db330f885441a06.PNG~tplv-a9rns2rl98-24:720:720.png?rcl=20251213073536DD80C013A12D55C870B2&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1766187336&x-signature=JCKKwI7c8qbpPoRoAwXye67RfQk%3D" alt="British Red Cross Logo" class="h-10 mb-4">
+                    <p class="text-gray-300">The British Red Cross helps people in crisis, whoever and wherever they are.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">What We Do</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Donate</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Shop</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Get Help</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">First Aid</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Support During Crisis</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Find Your Local Branch</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fa fa-facebook-square text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fa fa-twitter-square text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fa fa-instagram text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fa fa-linkedin-square text-2xl"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fa fa-youtube-square text-2xl"></i></a>
+                    </div>
+                    <p class="text-gray-300">Sign up for our newsletter</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-neutral-dark">
+                        <button class="bg-red-cross text-white px-4 py-2 rounded-r-lg hover:bg-red-cross-dark transition-colors">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2025 British Red Cross. All rights reserved.</p>
+                <div class="mt-2 flex justify-center space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // User Menu Dropdown
+        document.getElementById('user-menu-button').addEventListener('click', function() {
+            const dropdown = document.getElementById('user-dropdown');
+            dropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const userMenu = document.getElementById('user-menu-button');
+            const dropdown = document.getElementById('user-dropdown');
+            if (!userMenu.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Tabs Functionality
+        const tabs = document.querySelectorAll('#rewards-tabs button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and panes
+                tabs.forEach(t => {
+                    t.classList.remove('active', 'border-red-cross', 'text-red-cross');
+                    t.classList.add('border-transparent', 'hover:text-gray-600', 'hover:border-gray-300');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                
+                tabPanes.forEach(pane => {
+                    pane.classList.add('hidden');
+                    pane.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                tab.classList.add('active', 'border-red-cross', 'text-red-cross');
+                tab.classList.remove('border-transparent', 'hover:text-gray-600', 'hover:border-gray-300');
+                tab.setAttribute('aria-selected', 'true');
+                
+                // Show corresponding tab pane
+                const tabId = tab.getAttribute('data-tab');
+                const tabPane = document.getElementById(tabId);
+                tabPane.classList.remove('hidden');
+                tabPane.classList.add('active');
+            });
+        });
+
+        // Collectible Detail Buttons
+        document.querySelectorAll('.card-hover button').forEach(button => {
+            button.addEventListener('click', function() {
+                const collectibleName = this.closest('.card-hover').querySelector('h3').textContent;
+                alert(`You clicked on ${collectibleName}! This would show more details in a real application.`);
+            });
+        });
+
+        // Redeem Buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.trim() === 'Redeem') {
+                    const itemName = this.closest('.border').querySelector('h3').textContent;
+                    alert(`You are redeeming ${itemName}. This would process your redemption in a real application.`);
+                } else if (this.textContent.includes('Earn More Points')) {
+                    alert('Learn how to earn more points by donating, volunteering, or shopping at our charity stores!');
+                } else if (this.textContent.includes('Redeem More Collectibles')) {
+                    // Switch to redeem tab
+                    document.querySelector('[data-tab="redeem"]').click();
+                }
+            });
+        });
+
+        //模拟积分明细数据加载
+        setTimeout(() => {
+            const pointsHistory = document.querySelector('#points table tbody');
+            if (pointsHistory) {
+                pointsHistory.classList.add('opacity-100');
+                pointsHistory.classList.remove('opacity-50');
+            }
+        }, 500);
+
+        // Donation Calendar Functionality
+        (function() {
+            const calendarGrid = document.getElementById('calendar-grid');
+            const currentMonthEl = document.getElementById('current-month');
+            const prevMonthBtn = document.getElementById('prev-month');
+            const nextMonthBtn = document.getElementById('next-month');
+            
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+            
+            // Sample donation dates (YYYY-MM-DD format)
+            const donationDates = [
+                '2025-12-01', '2025-12-05', '2025-12-10', '2025-12-15', '2025-12-16', 
+                '2025-12-17', '2025-12-18', '2025-12-19', '2025-11-02', '2025-11-07', 
+                '2025-11-15', '2025-11-20', '2025-10-05', '2025-10-15', '2025-10-30'
+            ];
+            
+            function isDonationDay(year, month, day) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                return donationDates.includes(dateStr);
+            }
+            
+            function generateCalendar(month, year) {
+                calendarGrid.innerHTML = '';
+                
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const daysInPrevMonth = new Date(year, month, 0).getDate();
+                
+                // Update current month display
+                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                currentMonthEl.textContent = `${monthNames[month]} ${year}`;
+                
+                // Add days from previous month
+                for (let i = firstDay - 1; i >= 0; i--) {
+                    const day = daysInPrevMonth - i;
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'h-12 flex items-center justify-center rounded-full text-gray-400 bg-gray-50';
+                    dayEl.textContent = day;
+                    calendarGrid.appendChild(dayEl);
+                }
+                
+                // Add days from current month
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayEl = document.createElement('div');
+                    const isDonation = isDonationDay(year, month, day);
+                    
+                    if (isDonation) {
+                        dayEl.className = 'h-12 flex flex-col items-center justify-center rounded-full bg-red-cross-light cursor-pointer hover:bg-red-100 transition-colors';
+                        dayEl.innerHTML = `
+                            <span class="text-neutral-dark font-medium">${day}</span>
+                            <i class="fa fa-heart text-red-cross text-xs mt-1 animate-pulse-slow"></i>
+                        `;
+                        dayEl.title = 'You made a donation on this day!';
+                    } else {
+                        dayEl.className = 'h-12 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-colors';
+                        dayEl.textContent = day;
+                    }
+                    
+                    // Highlight current day
+                    if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+                        dayEl.classList.add('border-2', 'border-red-cross');
+                    }
+                    
+                    calendarGrid.appendChild(dayEl);
+                }
+                
+                // Calculate remaining cells for next month
+                const totalCells = calendarGrid.children.length;
+                const remainingCells = 42 - totalCells; // 6 rows * 7 days
+                
+                // Add days from next month
+                for (let day = 1; day <= remainingCells; day++) {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'h-12 flex items-center justify-center rounded-full text-gray-400 bg-gray-50';
+                    dayEl.textContent = day;
+                    calendarGrid.appendChild(dayEl);
+                }
+            }
+            
+            // Initialize calendar
+            generateCalendar(currentMonth, currentYear);
+            
+            // Event listeners for month navigation
+            prevMonthBtn.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+            
+            nextMonthBtn.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+        })();
+    </script>
+</body>
+</html>
